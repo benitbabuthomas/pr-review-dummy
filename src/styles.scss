@@ -1,1 +1,107 @@
+@import "@angular/material/prebuilt-themes/azure-blue.css";
+
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary-color: #667eea;
+  --primary-dark: #764ba2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Custom Material Toolbar Styling */
+.mat-toolbar.mat-primary {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-toolbar .mat-button {
+  color: white !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-transform: none !important;
+}
+
+.mat-toolbar .mat-button .mat-icon {
+  color: white !important;
+  margin-right: 4px !important;
+}
+
+.mat-toolbar .mat-icon {
+  color: white !important;
+}
+
+/* Toolbar title styling */
+.mat-toolbar > span {
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+
+/* Enhanced Material Button Styling with Higher Specificity */
+.mat-mdc-raised-button.mat-primary,
+.mat-raised-button.mat-primary,
+button.mat-mdc-raised-button.mat-primary,
+button.mat-raised-button.mat-primary,
+a.mat-mdc-raised-button.mat-primary,
+a.mat-raised-button.mat-primary {
+  background: var(--primary-gradient) !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 500 !important;
+  box-shadow: 0 3px 5px rgba(102, 126, 234, 0.3) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover,
+.mat-raised-button.mat-primary:hover,
+button.mat-mdc-raised-button.mat-primary:hover,
+button.mat-raised-button.mat-primary:hover,
+a.mat-mdc-raised-button.mat-primary:hover,
+a.mat-raised-button.mat-primary:hover {
+  background: var(--primary-gradient) !important;
+  background-color: transparent !important;
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+.mat-mdc-raised-button.mat-primary .mat-icon,
+.mat-raised-button.mat-primary .mat-icon {
+  color: white !important;
+}
+
+/* Override Material Design Components (MDC) styles */
+.mdc-button--raised.mat-primary {
+  background: var(--primary-gradient) !important;
+  background-color: transparent !important;
+}
+
+.mdc-button--raised.mat-primary:hover {
+  background: var(--primary-gradient) !important;
+  background-color: transparent !important;
+}
