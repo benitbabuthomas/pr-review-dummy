@@ -8,17 +8,65 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <div class="app-container">
-  <mat-toolbar color="primary">
-    <span>CRUD App</span>
+  <mat-toolbar color="primary" class="app-toolbar">
+    <span class="app-title">{{ title }}</span>
     <span class="spacer"></span>
-    <a mat-button routerLink="/home" routerLinkActive="active-link">
-      <mat-icon>home</mat-icon>
-      Home
-    </a>
-    <a mat-button routerLink="/users" routerLinkActive="active-link">
-      <mat-icon>people</mat-icon>
-      Users
-    </a>
+
+    <!-- Navigation for authenticated users -->
+    <ng-container *ngIf="isAuthenticated">
+      <div class="nav-links">
+        <a mat-button routerLink="/home" routerLinkActive="active-link">
+          <mat-icon>home</mat-icon>
+          Home
+        </a>
+        <a mat-button routerLink="/users" routerLinkActive="active-link">
+          <mat-icon>people</mat-icon>
+          Users
+        </a>
+      </div>
+
+      <!-- User menu for authenticated users -->
+      <div class="user-menu">
+        <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+          <img
+            [src]="
+              currentUser?.image || 'https://via.placeholder.com/32x32?text=U'
+            "
+            [alt]="currentUser?.firstName"
+            class="user-avatar"
+          />
+          <span class="user-name">{{ currentUser?.firstName }}</span>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item (click)="goToProfile()">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="onLogout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </ng-container>
+
+    <!-- Auth buttons for non-authenticated users -->
+    <ng-container *ngIf="!isAuthenticated">
+      <div class="auth-buttons">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="getAuthButtonConfig().action()"
+          class="auth-btn"
+        >
+          <mat-icon>{{ getAuthButtonConfig().icon }}</mat-icon>
+          <span>{{ getAuthButtonConfig().text }}</span>
+        </button>
+      </div>
+    </ng-container>
   </mat-toolbar>
 
   <main class="main-content">

@@ -1,0 +1,268 @@
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  .profile-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    mat-card-header {
+      padding: 24px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 12px 12px 0 0;
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+
+        .user-avatar {
+          .avatar-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+          }
+        }
+
+        .user-info {
+          flex: 1;
+
+          h2 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-weight: 600;
+          }
+
+          .username {
+            margin: 0 0 4px 0;
+            font-size: 16px;
+            opacity: 0.9;
+          }
+
+          .email {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
+    mat-card-content {
+      padding: 0;
+
+      .mat-mdc-tab-group {
+        .mat-mdc-tab-header {
+          border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-content {
+          padding: 24px;
+        }
+      }
+    }
+
+    mat-card-actions {
+      padding: 16px 24px;
+      border-top: 1px solid #e0e0e0;
+      background-color: #fafafa;
+      border-radius: 0 0 12px 12px;
+
+      &.form-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+
+        button {
+          min-width: 120px;
+
+          .spinner {
+            margin-right: 8px;
+          }
+
+          &:disabled {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+.profile-form {
+  .form-section {
+    margin-bottom: 24px;
+
+    h3 {
+      margin: 0 0 20px 0;
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 8px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+
+      .half-width {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
+    .full-width {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    mat-form-field {
+      .mat-mdc-form-field-subscript-wrapper {
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 40px;
+
+  mat-spinner {
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 16px;
+
+    .profile-card {
+      mat-card-header {
+        padding: 20px;
+
+        .profile-header {
+          flex-direction: column;
+          text-align: center;
+          gap: 16px;
+
+          .user-avatar {
+            .avatar-image {
+              width: 60px;
+              height: 60px;
+            }
+          }
+
+          .user-info {
+            h2 {
+              font-size: 20px;
+            }
+
+            .username {
+              font-size: 14px;
+            }
+
+            .email {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .tab-content {
+        padding: 16px !important;
+      }
+
+      mat-card-actions {
+        padding: 12px 16px;
+
+        &.form-actions {
+          flex-direction: column;
+
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .profile-form {
+      .form-section {
+        .form-row {
+          flex-direction: column;
+          gap: 12px;
+
+          .half-width {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 12px;
+
+    .profile-card {
+      mat-card-header {
+        padding: 16px;
+
+        .profile-header {
+          .user-info {
+            h2 {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+
+      .tab-content {
+        padding: 12px !important;
+      }
+    }
+
+    .profile-form {
+      .form-section {
+        margin-bottom: 16px;
+
+        h3 {
+          font-size: 16px;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}
+
+// Custom snackbar styles
+::ng-deep {
+  .success-snackbar {
+    background-color: #4caf50 !important;
+    color: white !important;
+  }
+
+  .error-snackbar {
+    background-color: #f44336 !important;
+    color: white !important;
+  }
+}

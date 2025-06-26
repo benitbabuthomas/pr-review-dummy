@@ -1,0 +1,183 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 100%;
+
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    mat-card-header {
+      text-align: center;
+      margin-bottom: 16px;
+
+      mat-card-title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      mat-card-subtitle {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.4;
+      }
+    }
+
+    mat-card-content {
+      padding: 20px;
+    }
+
+    mat-card-actions {
+      padding: 0 20px 20px;
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .full-width {
+      width: 100%;
+    }
+
+    mat-form-field {
+      .mat-mdc-form-field-subscript-wrapper {
+        margin-top: 4px;
+      }
+    }
+
+    .form-actions {
+      margin-top: 8px;
+
+      button {
+        height: 48px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 8px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .button-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .spinner {
+          width: 20px !important;
+          height: 20px !important;
+        }
+
+        // Ensure text and spinner are on the same line
+        span {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &:disabled {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .card-actions {
+    .register-section {
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      border-top: 1px solid #eee;
+
+      p {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+        color: #666;
+      }
+
+      button {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .demo-credentials {
+    width: 100%;
+    max-width: 400px;
+
+    .demo-card {
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.95);
+
+      mat-card-header {
+        mat-card-title {
+          font-size: 18px;
+          color: #333;
+        }
+      }
+
+      mat-card-content {
+        padding: 16px;
+
+        p {
+          margin: 6px 0;
+          font-size: 14px;
+
+          &.demo-note {
+            margin-top: 12px;
+            font-style: italic;
+            color: #666;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+
+    .login-card {
+      mat-card-content {
+        padding: 16px;
+      }
+
+      mat-card-actions {
+        padding: 0 16px 16px;
+      }
+    }
+
+    .login-form {
+      gap: 12px;
+    }
+  }
+}
+
+// Custom snackbar styles
+::ng-deep {
+  .success-snackbar {
+    background-color: #4caf50 !important;
+    color: white !important;
+  }
+
+  .error-snackbar {
+    background-color: #f44336 !important;
+    color: white !important;
+  }
+}
