@@ -1,0 +1,260 @@
+<div class="profile-container" *ngIf="!isLoading; else loadingTemplate">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <div class="profile-header">
+        <div class="user-avatar">
+          <img
+            [src]="
+              userProfile?.image ||
+              'https://via.placeholder.com/100x100?text=User'
+            "
+            [alt]="currentUser?.firstName + ' ' + currentUser?.lastName"
+            class="avatar-image"
+          />
+        </div>
+        <div class="user-info">
+          <h2>{{ currentUser?.firstName }} {{ currentUser?.lastName }}</h2>
+          <p class="username">{{ "@" }}{{ currentUser?.username }}</p>
+          <p class="email">{{ currentUser?.email }}</p>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Personal Information">
+          <div class="tab-content">
+            <form [formGroup]="profileForm" class="profile-form">
+              <div class="form-section">
+                <h3>Basic Information</h3>
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>First Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="firstName"
+                      placeholder="Enter first name"
+                    />
+                    <mat-error
+                      *ngIf="
+                        profileForm.get('firstName')?.invalid &&
+                        profileForm.get('firstName')?.touched
+                      "
+                    >
+                      {{ getErrorMessage("firstName") }}
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Last Name</mat-label>
+                    <input
+                      matInput
+                      formControlName="lastName"
+                      placeholder="Enter last name"
+                    />
+                    <mat-error
+                      *ngIf="
+                        profileForm.get('lastName')?.invalid &&
+                        profileForm.get('lastName')?.touched
+                      "
+                    >
+                      {{ getErrorMessage("lastName") }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    type="email"
+                    formControlName="email"
+                    placeholder="Enter email address"
+                  />
+                  <mat-error
+                    *ngIf="
+                      profileForm.get('email')?.invalid &&
+                      profileForm.get('email')?.touched
+                    "
+                  >
+                    {{ getErrorMessage("email") }}
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Phone</mat-label>
+                    <input
+                      matInput
+                      formControlName="phone"
+                      placeholder="Enter phone number"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Age</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="age"
+                      placeholder="Enter age"
+                      min="13"
+                      max="120"
+                    />
+                    <mat-error
+                      *ngIf="
+                        profileForm.get('age')?.invalid &&
+                        profileForm.get('age')?.touched
+                      "
+                    >
+                      {{ getErrorMessage("age") }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>University</mat-label>
+                  <input
+                    matInput
+                    formControlName="university"
+                    placeholder="Enter university name"
+                  />
+                </mat-form-field>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Address">
+          <div class="tab-content">
+            <form [formGroup]="profileForm" class="profile-form">
+              <div class="form-section" formGroupName="address">
+                <h3>Address Information</h3>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Street Address</mat-label>
+                  <input
+                    matInput
+                    formControlName="address"
+                    placeholder="Enter street address"
+                  />
+                </mat-form-field>
+
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>City</mat-label>
+                    <input
+                      matInput
+                      formControlName="city"
+                      placeholder="Enter city"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>State</mat-label>
+                    <input
+                      matInput
+                      formControlName="state"
+                      placeholder="Enter state"
+                    />
+                  </mat-form-field>
+                </div>
+
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Postal Code</mat-label>
+                    <input
+                      matInput
+                      formControlName="postalCode"
+                      placeholder="Enter postal code"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Country</mat-label>
+                    <input
+                      matInput
+                      formControlName="country"
+                      placeholder="Enter country"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Professional">
+          <div class="tab-content">
+            <form [formGroup]="profileForm" class="profile-form">
+              <div class="form-section" formGroupName="company">
+                <h3>Professional Information</h3>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Company Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="name"
+                    placeholder="Enter company name"
+                  />
+                </mat-form-field>
+
+                <div class="form-row">
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Job Title</mat-label>
+                    <input
+                      matInput
+                      formControlName="title"
+                      placeholder="Enter job title"
+                    />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="half-width">
+                    <mat-label>Department</mat-label>
+                    <input
+                      matInput
+                      formControlName="department"
+                      placeholder="Enter department"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+
+    <mat-card-actions class="form-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSave()"
+        [disabled]="isUpdating || !hasChanges"
+      >
+        <mat-spinner
+          *ngIf="isUpdating"
+          diameter="20"
+          class="spinner"
+        ></mat-spinner>
+        <span *ngIf="!isUpdating">Save Changes</span>
+        <span *ngIf="isUpdating">Saving...</span>
+      </button>
+
+      <button
+        mat-button
+        (click)="onCancel()"
+        [disabled]="isUpdating || !hasChanges"
+      >
+        Cancel
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading profile...</p>
+  </div>
+</ng-template>

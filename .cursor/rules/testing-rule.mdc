@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+* Always write and run unit test cases for all functions for the following files:
+  - component
+  - service
+
+* Mock should be created for each model with type same as model
